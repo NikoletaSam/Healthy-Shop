@@ -1,0 +1,19 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+
+    <div class="info">
+        <h4 class="border-bottom mb-5">Oops...</h4>
+        <p>The page you are looking for is not available.<br>
+            Check the current available <a th:href="@{/all/food}">food</a> instead.
+        </p>
+
+    </div>
+</div>
+</body>
+</html>

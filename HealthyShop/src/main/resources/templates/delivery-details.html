@@ -1,0 +1,69 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<main class="p-5 align-content-center bg-blur my-register-div">
+
+    <h1 class="border-bottom mb-5">Your delivery details</h1>
+    <div class="d-flex justify-content-center">
+
+        <div class="row g-3 align-items-center">
+            <form
+                    th:action="@{/add/delivery/details}"
+                    th:method="post"
+                    th:object="${deliveryDto}">
+
+                <div>
+                    <div class="col-auto">
+                        <label for="inputCountry" class="col-form-label ">Country</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text"
+                               th:field="*{country}"
+                               name="country"
+                               required minlength="4" maxlength="50"
+                               id="inputCountry"
+                               class="form-control"
+                               aria-describedby="countryHelpInline">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label for="inputCity" class="col-form-label ">City</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text"
+                               th:field="*{city}"
+                               name="city"
+                               required minlength="4" maxlength="50"
+                               id="inputCity" class="form-control"
+                               aria-describedby="cityHelpInline">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label for="inputAddress" class="col-form-label ">Address</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text"
+                               th:field="*{address}"
+                               name="address"
+                               required minlength="4" maxlength="50"
+                               id="inputAddress" class="form-control"
+                               aria-describedby="cityHelpInline">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-link nav-link" type="submit">Add details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

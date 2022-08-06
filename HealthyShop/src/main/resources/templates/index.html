@@ -1,0 +1,32 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+
+    <div class="info">
+            <h4 class="border-bottom mb-5">Welcome</h4>
+            <p>Healthy food is on the way!<br>
+                Check our offers and pick your healthy meal!<br>
+                We make one portion of each food, so get yours before someone else!
+            </p>
+        <section class="comments">
+            <h3 class="border-bottom mb-5">Check what our clients say about us</h3>
+            <button class="btn btn-link nav-link" id="loadComments">OPINIONS</button>
+
+            <div>
+                <span id="commentCtnr"></span>
+                <div class="text-center">
+                    <button class="btn btn-link nav-link" id="hideComments">HIDE</button>
+                </div>
+            </div>
+            <script th:src="@{/js/comments.js}"></script>
+        </section>
+    </div>
+
+</div>
+</body>
+</html>

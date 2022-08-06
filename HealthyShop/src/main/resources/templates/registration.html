@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+<body>
+    <div class="wrapper">
+        <header th:replace="fragments/header"></header>
+
+        <h2 class="border-bottom mb-5">Register User</h2>
+        <form
+                th:action="@{/users/register}"
+                th:method="post"
+                th:object="${registrationDto}"
+                class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+            <div>
+                <div class="col-auto">
+                    <label for="username" class="border-bottom mb-5">Username</label>
+                </div>
+
+                <div class="col-auto">
+                    <input name="username"
+                           th:field="*{username}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           id="username"
+                           class="form-control"
+                           aria-describedby="usernameHelpInline"/>
+                    <small id="usernameError"
+                           class="invalid-feedback bg-danger text-light rounded">
+                        Username length must be more than 5 characters</small>
+
+                    <small th:if="${usernameOccupied}" id="usernameUniqueError"
+                           class="text-light bg-danger rounded">Username is already occupied</small>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-auto">
+                    <label for="inputFullName" class="border-bottom mb-5">Full Name</label>
+                </div>
+                <div class="col-auto">
+                    <input name="fullname"
+                           th:field="*{fullName}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           id="inputFullName"
+                           class="form-control"
+                           aria-describedby="fullNameHelpInline">
+                    <small id="fullNameError"
+                           class="invalid-feedback text-light form-text bg-danger rounded">
+                        Full name length must be more than 5 characters</small>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-auto">
+                    <label for="inputEmail" class="border-bottom mb-5">Email</label>
+                </div>
+                <div class="col-auto">
+                    <input name="email"
+                           th:field="*{email}"
+                           th:errorclass="is-invalid"
+                           type="email"
+                           id="inputEmail"
+                           class="form-control"
+                           aria-describedby="emailHelpInline">
+                    <small th:if="${#fields.hasErrors('email')}"
+                           id="emailError"
+                           class="invalid-feedback text-light form-text bg-danger rounded">Must be valid email</small>
+                    <small th:if="${emailOccupied}" id="emailUniqueError"
+                           class=" bg-danger text-light rounded">Email is already occupied</small>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-auto">
+                    <label for="inputAge" class="border-bottom mb-5">Age</label>
+                </div>
+                <div class="col-auto">
+                    <input name="age"
+                           th:field="*{age}"
+                           th:errorclass="is-invalid"
+                           type="number"
+                           id="inputAge"
+                           class="form-control"
+                           aria-describedby="ageHelpInline">
+                    <small id="ageError"
+                           class="invalid-feedback text-light form-text bg-danger rounded">Age must be a positive number</small>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-auto">
+                    <label for="inputPassword" class="border-bottom mb-5">Password</label>
+                </div>
+                <div class="col-auto">
+                    <input name="password"
+                           th:field="*{password}"
+                           th:errorclass="is-invalid"
+                           type="password"
+                           id="inputPassword"
+                           class="form-control"
+                           aria-describedby="passwordHelpInline">
+                    <small id="passwordError"
+                           class="invalid-feedback text-light form-text bg-danger rounded">
+                        Password length must be between 5 and 20 characters and passwords should match.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-auto">
+                    <label for="inputConfirmPassword" class="border-bottom mb-5">Confirm Password</label>
+                </div>
+                <div class="col-auto">
+                    <input name="confirmPassword"
+                           th:field="*{confirmPassword}"
+                           th:errorclass="is-invalid"
+                           type="password"
+                           id="inputConfirmPassword"
+                           class="form-control"
+                           aria-describedby="confirmPasswordHelpInline">
+                    <small id="confirmPasswordError"
+                           class="invalid-feedback text-light form-text bg-danger rounded">
+                        Password length must be between 5 and 20 characters and passwords should match.
+                    </small>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn btn-link nav-link" type="submit">Register</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

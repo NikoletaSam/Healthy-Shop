@@ -1,0 +1,40 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+
+    <div th:object="${foodDetails}">
+
+        <section class="food-info text-center">
+            <span th:if="*{categoryType == 'APPETIZER'}">
+                <img class="rounded" src="/images/appetizer.jpg" width="200px" height="200px" alt="Appetizer image">
+            </span>
+            <span th:if="*{categoryType == 'SALAD'}">
+                <img class="rounded" src="/images/salad.jpg" width="200px" height="200px" alt="Salad image">
+            </span>
+            <span th:if="*{categoryType == 'DESSERT'}">
+                <img class="rounded" src="/images/dessert.jpg" width="200px" height="200px" alt="Dessert image">
+            </span>
+            <h4 class="border-bottom mb-5" id="food-name" th:text="*{name}"></h4><br>
+            <p>Calories: <span id="calories" th:text="*{calories}"></span> kcal<br>
+            Grams: <span th:text="*{grams}" id="grams"></span><br>
+            Category: <span th:text="*{categoryType}" id="categoryType"></span><br>
+            Price: <span th:text="*{price}" id="price"></span><br>
+                <div class="food-description text-center">
+                    <h5>Description:</h5><br>
+                    <p id="food-description" th:text="*{description}">Description: </p>
+                </div>
+            <section class="order" >
+                <a sec:authorize="isAuthenticated()" th:href="@{/add/food/{id}/to/order(id=*{id})}"
+                   class="btn btn-link">Add to order</a>
+            </section>
+        </section>
+    </div>
+</div>
+</body>
+</html>

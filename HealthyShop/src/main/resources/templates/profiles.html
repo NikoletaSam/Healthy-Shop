@@ -1,0 +1,46 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<header th:replace="fragments/header"></header>
+    <span class="info row mx-auto d-flex flex-row justify-content-center" th:each="u : ${usersProfiles}" th:object="${u}">
+        <span>
+            <img class="rounded" src="/images/profile.jpg" width="100px" height="100px" alt="Profile image">
+        </span>
+        <br>
+        <div>
+            <span class="bg-secondary p-1 px-4 rounded text-white" th:each="r : *{roles}" th:text="${r.name()}">Role</span><br>
+            <h4 th:text="|Full name: *{fullName}|">Full Name</h4>
+            <p th:text="|Username: *{username}|">Username</p>
+            <p th:text="|Email: *{email}|">Email</p>
+            <p th:text="|Age: *{age}|">Age</p>
+            <a th:href="@{/make/admin/{id}(id=*{id})}"
+               class="btn btn-link">Add user as admin</a>
+        </div>
+    </span><br>
+</div>
+
+<!---->
+
+<!--            <div class="details-main">-->
+<!--                <div class="food row mx-auto d-flex flex-row justify-content-center" style="justify-content: center; padding-top: 90px;" th:each="u : ${usersProfiles}" th:object="${u}">-->
+<!--                    <div class="text-center">-->
+<!--                        <img class="rounded" src="/images/profile.jpg" width="200px" height="200px" alt="Profile image">-->
+<!--                        <div class="text-center mt-3">-->
+
+<!--                        <span class="bg-secondary p-1 px-4 rounded text-white" th:each="r : *{roles}" th:text="${r.name()}">Role</span><br>-->
+<!--                            <h5 class="mt-4 mb-0" th:text="*{fullName}">Full Name</h5><br>-->
+<!--                            <p class="mt-2 mb-0" th:text="*{username}">Username<br>-->
+<!--                            <p class="mt-2 mb-0" th:text="*{email}">Email</p><br>-->
+<!--                            <p class="mt-2 mb-0" th:text="*{age}">Age</p><br>-->
+
+<!--                            <div class="buttons">-->
+<!--                                <a th:href="@{/make/admin}" class="btn btn-link justify-content-center">Add user as admin</a>-->
+<!--                            </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+</body>
+</html>

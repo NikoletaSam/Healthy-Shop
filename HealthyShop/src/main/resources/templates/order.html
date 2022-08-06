@@ -1,0 +1,59 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+
+    <div class="food">
+        <span th:object="${order}">
+            <div class="details-main">
+                <span class="info row mx-auto d-flex flex-row justify-content-center" style="justify-content: center; padding-top: 90px;" th:each="f : *{food}" th:object="${f}">
+                    <span th:if="*{categoryType == 'APPETIZER'}">
+                        <img class="mr-1" src="/images/appetizer.jpg" width="100px" height="100px" alt="Appetizer image">
+                    </span>
+                    <span th:if="*{categoryType == 'SALAD'}">
+                        <img class="mr-1" src="/images/salad.jpg" width="100px" height="100px" alt="Salad image">
+                    </span>
+                    <span th:if="*{categoryType == 'DESSERT'}">
+                        <img class="mr-1" src="/images/dessert.jpg" width="100px" height="100px" alt="Dessert image">
+                    </span>
+                    <br>
+                    <div>
+                        <h4 th:text="*{name}">Food name</h4>
+                        <p th:text="*{description}">The best food in the whole world!</p>
+                        <p th:text="|Price: *{price} lv.|">Price for current food.</p>
+                        <a th:href="@{/remove/food/{id}(id=*{id})}"
+                       class="btn btn-link">Remove food from order</a>
+                    </div>
+                </span><br>
+            </div>
+
+
+            <span class="mt-4 mb-5 mx-auto justify-content-center">
+                <h4 class="border-bottom text-center" th:text="|Total price: *{totalValue} lv.|"></h4>
+                <a th:if="${noDetails}" th:href="@{/add/delivery/details}" class="btn btn-link nav-link">Add delivery details to finish your order</a>
+                <section th:if="${finishOrder}">
+                    <h5 class="border-bottom" th:text="|Delivery details:|"></h5>
+                    <div th:object="${deliveryDto}">
+                        <section class="food text-center">
+                        <p>
+                            <span id="country" th:text="|Country: *{country}|"></span><br>
+                            <span th:text="|City: *{city}|" id="city"></span><br>
+                            <span th:text="|Address: *{address}|" id="address"></span>
+                        </p>
+                        </section>
+                    </div>
+                    <a th:href="@{/order/finish}" class="btn btn-link nav-link">Buy products</a>
+                </section>
+            </span>
+        </span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

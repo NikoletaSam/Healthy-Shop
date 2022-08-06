@@ -1,0 +1,23 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+
+    <div class="info">
+        <h4 class="border-bottom mb-5">Thank you for your order!</h4>
+        <p>You have successfully made your order.<br>
+            Your meal will be at your door in maximum 30 minutes.<br>
+            Please, make sure to leave a comment and share your opinion!
+        </p>
+        <section class="order justify-content-center" >
+            <a th:href="@{/add/comment}" class="btn btn-link justify-content-center">Leave us a comment</a>
+        </section>
+    </div>
+
+</div>
+</body>
+</html>

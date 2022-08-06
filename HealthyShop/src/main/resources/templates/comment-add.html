@@ -1,0 +1,46 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+        <section >
+            <h1 class="border-bottom mb-5">Comments</h1>
+            <div>
+                <form id="commentForm"
+                      th:method="POST"
+                      th:action="@{/add/comment}"
+                      th:object="${commentDto}">
+
+                    <div class="form-group">
+                        <h4>Your opinion is important to us!</h4>
+                        <label for="text">Message</label>
+
+                        <textarea name="text"
+                                  th:field="*{text}"
+                                  th:errorclass="is-invalid"
+                                  id="text"
+                                  cols="30"
+                                  rows="5"
+                                  class="form-control"
+                                  style="background-color: #b1dfbb;"></textarea>
+                        <small id="messageError" class="invalid-feedback bg-danger text-light rounded">
+                            Message should be at least 10 characters.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit"
+                               class="btn btn-link nav-link"
+                               id="postComment"
+                               value="Post Comment"/>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

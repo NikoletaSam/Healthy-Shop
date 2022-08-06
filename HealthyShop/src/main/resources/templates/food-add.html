@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header"></header>
+    <main>
+        <h1 class="text-white border-bottom mb-5">Add food</h1>
+
+        <form class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
+              th:action="@{/food/add}"
+              th:method="POST"
+              th:object="${foodDto}">
+
+            <div class="form-group">
+                <div class="h5 abel-holder text-white textCol d-flex justify-content-center">
+                    <label for="name" class="border-bottom mb-5">Name</label>
+                </div>
+                <input type="text" class="form-control" id="name"
+                       th:field="*{name}"
+                       th:errorclass="is-invalid"
+                       name="name"/>
+                <small id="nameHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    Name length must be at least 5 characters.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <div class="h5 label-holder text-white textCol d-flex justify-content-center">
+                    <label for="grams" class="border-bottom mb-5">Grams</label>
+                </div>
+                <input type="number" step="0.1" class="form-control" id="grams"
+                       th:field="*{grams}"
+                       th:errorclass="is-invalid"
+                       name="grams"/>
+                <small id="gramsHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    Grams must be a positive number.</small>
+            </div>
+
+            <div class="form-group">
+                <div class="h5 label-holder text-white textCol d-flex justify-content-center">
+                    <label for="calories" class="border-bottom mb-5">Calories</label>
+                </div>
+                <input type="number" step="1" class="form-control" id="calories"
+                       th:field="*{calories}"
+                       th:errorclass="is-invalid"
+                       name="calories"/>
+                <small id="caloriesHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    Calories must be a positive number.</small>
+            </div>
+
+            <div class="form-group">
+                <div class="h5 label-holder text-white textCol d-flex justify-content-center">
+                    <label for="price" class="border-bottom mb-5">Price</label>
+                </div>
+                <input type="number" step="0.01" class="form-control" id="price"
+                       th:field="*{price}"
+                       th:errorclass="is-invalid"
+                       name="price"/>
+                <small id="priceHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    Price must be a positive number.</small>
+            </div>
+
+            <div class="form-group">
+                <div class="h5 label-holder text-white textCol d-flex justify-content-center">
+                    <label for="description" class="border-bottom mb-5">Description</label>
+                </div>
+                <input type="text" class="form-control" id="description"
+                       th:field="*{description}"
+                       th:errorclass="is-invalid"
+                       name="description"/>
+                <small id="descriptionHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    Description length must be at least 10 characters.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <div class="h5 text-white label-holder d-flex justify-content-center">
+                    <label for="categoryType" class="border-bottom mb-5">Category</label>
+                </div>
+
+                <select class="browser-default custom-select" id="categoryType"
+                        th:field="*{categoryType}"
+                        th:errorclass="is-invalid"
+                        name="categoryType">
+                    <option value="" selected>Select category</option>
+                    <option value="APPETIZER">Appetizer</option>
+                    <option value="SALAD">Salad</option>
+                    <option value="DESSERT">Dessert</option>
+                </select>
+
+                <small id="categoryTypeHelpInline" class="invalid-feedback bg-danger text-light rounded">
+                    You must select a category.</small>
+            </div>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-link nav-link" id="addFood">Add food</button>
+            </div>
+
+        </form>
+    </main>
+</div>
+</body>
+</html>
