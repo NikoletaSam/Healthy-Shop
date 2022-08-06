@@ -28,7 +28,7 @@ public class AddFoodDto {
     @Size(min = 10)
     private String description;
 
-    @NotNull
+    @NotBlank
     private String categoryType;
 
     public AddFoodDto() {
