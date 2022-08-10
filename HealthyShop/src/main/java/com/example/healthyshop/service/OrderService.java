@@ -58,7 +58,7 @@ public class OrderService {
         Optional<User> userByUsername = userRepository.findUserByUsername(username);
         Optional<Food> food = foodRepository.findById(foodId);
 
-        if (userByUsername.isPresent() && food.isPresent()){
+        if (userByUsername.isPresent() && food.isPresent() && food.get().isAvailable()){
             Order order = userByUsername.get().getOrder();
 
             order.addFood(food.get());

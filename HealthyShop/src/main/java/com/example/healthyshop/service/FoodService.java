@@ -65,6 +65,10 @@ public class FoodService {
     public FoodDetailsView getFoodDetails(Long foodId){
         Optional<Food> food = foodRepository.findById(foodId);
 
+        if (food.isPresent() && !food.get().isAvailable()){
+            throw new FoodNotFoundException("Food is not available.");
+        }
+
         TypeMap<Food, FoodDetailsView> typeMap = mapper.getTypeMap(Food.class, FoodDetailsView.class);
 
         if (typeMap == null){

@@ -137,6 +137,4 @@ public class OrderControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(view().name("order-ready"));
     }
-
-    //todo make tests for remove/food/id & order/finish
 }
